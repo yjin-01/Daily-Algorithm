@@ -27,3 +27,19 @@ function solution(n) {
 
   return answer;
 }
+
+// 부족한 금액 계산하기
+function solution(price, money, count) {
+  var answer = 0;
+  let total = 0;
+  for (let i = 1; i <= count; i++) {
+    total += price * i;
+  }
+  if (total < money) {
+    return 0;
+  }
+
+  answer = total - money;
+
+  return answer;
+}
