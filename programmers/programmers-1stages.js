@@ -72,3 +72,33 @@ function solution(left, right) {
 
   return answer;
 }
+
+// 로또의 최고 순위와 최저 순위
+function solution(lottos, win_nums) {
+  var answer = [];
+  let rank = [6, 6, 5, 4, 3, 2, 1];
+  let num = 0;
+  let win = 0;
+  let maxResult = 0;
+  let minResult = 0;
+
+  for (let i = 0; i < lottos.length; i++) {
+    if (lottos[i] === 0) {
+      num++;
+      continue;
+    }
+    for (let j = 0; j < win_nums.length; j++) {
+      if (lottos[i] === win_nums[j]) {
+        win++;
+      }
+    }
+  }
+
+  maxResult = win + num;
+  minResult = win;
+
+  answer.push(rank[maxResult]);
+  answer.push(rank[minResult]);
+
+  return answer;
+}
