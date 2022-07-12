@@ -102,3 +102,11 @@ function solution(lottos, win_nums) {
 
   return answer;
 }
+
+//2016년
+function solution(a, b) {
+  const week = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+  let day = week[new Date(`2016-${a}-${b}`).getDay()];
+
+  return day;
+}
