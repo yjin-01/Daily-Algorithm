@@ -103,10 +103,57 @@ function solution(lottos, win_nums) {
   return answer;
 }
 
-//2016년
+// 2016년
+
+// 방법 1
 function solution(a, b) {
   const week = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
   let day = week[new Date(`2016-${a}-${b}`).getDay()];
 
   return day;
+}
+
+// 방법 2
+const month = {
+  1: 31,
+  2: 29,
+  3: 31,
+  4: 30,
+  5: 31,
+  6: 30,
+  7: 31,
+  8: 31,
+  9: 30,
+  10: 31,
+  11: 30,
+  12: 31,
+};
+const week = ["FRI", "SAT", "SUN", "MON", "TUE", "WED", "THU"];
+
+function solution(a, b) {
+  const days = new Array(a).fill(1).reduce((acc, cur, i) => {
+    const mn = cur + i;
+    return acc + (mn !== a ? month[mn] : b - 1);
+  }, 0);
+  return week[days % 7];
+}
+
+// 최대공약수와 최소공배수
+function solution(n, m) {
+  var answer = [];
+  let min = Math.min(n, m);
+  let max = Math.max(n, m);
+  let gcd = 0;
+  let lcm = 0;
+  for (let i = 1; i <= min; i++) {
+    if (n % i === 0 && m % i === 0) {
+      gcd = i;
+    }
+  }
+  lcm = (n / gcd) * (m / gcd) * gcd;
+
+  answer.push(gcd);
+  answer.push(lcm);
+
+  return answer;
 }
